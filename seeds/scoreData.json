@@ -1,0 +1,86 @@
+[
+  {
+    "match_id": 1,
+    "team_id": 1,
+    "is_winner": 1,
+    "points" : 21
+  },
+  {
+    "match_id": 1,
+    "team_id": 2,
+    "is_winner": 0,
+    "points" : 12
+  },
+  {
+    "match_id": 2,
+    "team_id": 3,
+    "is_winner": 1,
+    "points" : 21
+  },
+  {
+    "match_id": 2,
+    "team_id": 4,
+    "is_winner": 0,
+    "points" : 16
+  },
+  {
+    "match_id": 3,
+    "team_id": 5,
+    "is_winner": 1,
+    "points" : 21
+  },
+  {
+    "match_id": 3,
+    "team_id": 6,
+    "is_winner": 0,
+    "points" : 9
+  },
+  {
+    "match_id": 4,
+    "team_id": 7,
+    "is_winner": 1,
+    "points" : 21
+  },
+  {
+    "match_id": 4,
+    "team_id": 8,
+    "is_winner": 0,
+    "points" : 15
+  },
+  {
+    "match_id": 5,
+    "team_id": 1,
+    "is_winner": 1,
+    "points" : 21
+  },
+  {
+    "match_id": 5,
+    "team_id": 3,
+    "is_winner": 0,
+    "points" : 9
+  },
+  {
+    "match_id": 6,
+    "team_id": 5,
+    "is_winner": 1,
+    "points" : 21
+  },
+  {
+    "match_id": 6,
+    "team_id": 7,
+    "is_winner": 0,
+    "points" : 15
+  },
+  {
+    "match_id": 7,
+    "team_id": 1,
+    "is_winner": 1,
+    "points" : 21
+  },
+  {
+    "match_id": 7,
+    "team_id": 5,
+    "is_winner": 0,
+    "points" : 20
+  }
+]
