@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS tournament_db;
-CREATE DATABASE tournament_db;
+DROP DATABASE IF EXISTS bracket_db;
+CREATE DATABASE bracket_db;
