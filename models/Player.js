@@ -1,6 +1,8 @@
 const { Model, DataTypes, INTEGER } = require('sequelize');
 const sequelize = require('../config/connection');
 
+class Player extends Model {};
+
 Player.init(
   {
     id: {
