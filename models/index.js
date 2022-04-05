@@ -1,5 +1,10 @@
-const { Match, Score, Player, Round, Team, Tournament, User }  = require('../models');
-
+const Match = require('./Match');
+const Score = require('./Score');
+const Player = require('./Player');
+const Round = require('./Round');
+const Team = require('./Team');
+const Tournament = require('./Tournament');
+const User = require('./User');
 
 Tournament.hasMany(Round, {
   foreignKey: 'tournament_id',
@@ -19,13 +24,18 @@ Match.belongsTo(Round, {
   foreignKey: 'round_id'
 });
 
-Match.hasMany(Outcome, {
-  foreignKey: 'match_id',
-  onDelete: 'CASCADE'
+Team.hasMany(Player, {
+  foreignKey: 'team_id'
 });
 
-Outcome.belongsTo(Match, {
-  foreignKey: 'match_id'
+Player.belongsTo(Team, {
+  foreignKey: 'team_id'
 });
+
+Match.belongsToMany(Team, { through: Score });
+
+Team.belongsToMany(Match, { through: Score });
+
+
 
 module.exports = { Match, Score, Player, Round, Team, Tournament, User };
