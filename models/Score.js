@@ -1,7 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-Outcome.init(
+class Score extends Model {};
+
+Score.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,6 +22,10 @@ Outcome.init(
     is_winner: {
       type: DataTypes.BOOLEAN,
       allowNull: false
+    },
+    points: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     }
   },
   {
@@ -27,8 +33,8 @@ Outcome.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'outcome',
+    modelName: 'score',
   }
 );
 
-module.exports = Outcome;
+module.exports = Score;
