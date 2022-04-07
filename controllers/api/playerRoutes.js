@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update player
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update player data
     try {
         const playerData = await Player.update(req.body, {

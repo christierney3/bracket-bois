@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update tournament
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update tournament data
     try {
         const tournamentData = await Tournament.update(req.body, {

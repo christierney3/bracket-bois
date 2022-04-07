@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update team
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update team data
     try {
         const teamData = await Team.update(req.body, {

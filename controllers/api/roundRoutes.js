@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update round
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update round data
     try {
         const roundData = await Round.update(req.body, {

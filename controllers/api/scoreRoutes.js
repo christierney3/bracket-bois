@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update score
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update score data
     try {
         const scoreData = await Score.update(req.body, {
