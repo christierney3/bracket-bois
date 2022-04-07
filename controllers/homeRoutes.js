@@ -6,16 +6,10 @@ router.get('/', async (req, res) => {
   try {
     // Get all tournaments and JOIN with user data
     const tournamentData = await Tournament.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
     });
 
     // Serialize data so the template can read it
-    const tournaments = tournamentData.map((tournament) => Tournament.get({ plain: true }));
+    const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -55,7 +49,6 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Tournament }],
     });
 
     const user = userData.get({ plain: true });
