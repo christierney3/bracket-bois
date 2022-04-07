@@ -4,13 +4,13 @@ const newFormHandler = async (event) => {
   const name = document.querySelector('#tournament-name').value.trim();
   const size = document.querySelector('#tournament-size').value.trim();
   const type = document.querySelector('#tournament-type').value.trim();
-  const startDate = document.querySelector('#start-date').value.trim();
-  const endDate = document.querySelector('#end-date').value.trim();
+  const start_date = document.querySelector('#start-date').value.trim();
+  const end_date = document.querySelector('#end-date').value.trim();
 
-  if (name && size && type && startDate && endDate) {
+  if (name && size && type && start_date && end_date) {
     const response = await fetch(`/api/tournaments`, {
       method: 'POST',
-      body: JSON.stringify({ name, size, type, startDate, endDate }),
+      body: JSON.stringify({ name, size, type, start_date, end_date }),
       headers: {
         'Content-Type': 'application/json',
       },
