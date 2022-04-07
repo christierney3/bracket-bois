@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Match } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// api/matchs
+// api/matches
 
 router.get('/', withAuth, async (req, res) => {
     // find all matchs
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update match
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update match data
     try {
         const matchData = await Match.update(req.body, {
