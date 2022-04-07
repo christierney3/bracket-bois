@@ -4,8 +4,8 @@ const withAuth = require('../../utils/auth');
 
 // api/matches
 
-router.get('/', withAuth, async (req, res) => {
-    // find all matchs
+router.get('/', async (req, res) => {
+    // find all matches
     try {
         const matchData = await Match.findAll({});
         res.status(200).json(matchData);
@@ -15,7 +15,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // get one match
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     // find a single match by its `id`
     try {
         const matchData = await Match.findByPk(req.params.id);
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update match
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     // update match data
     try {
         const matchData = await Match.update(req.body, {
@@ -50,7 +50,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     // delete one match by its `id` value
     try {
         const matchData = await Match.destroy({

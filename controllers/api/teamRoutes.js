@@ -4,7 +4,7 @@ const withAuth = require('../../utils/auth');
 
 // api/teams
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     // find all teams
     try {
         const teamData = await Team.findAll({});
@@ -15,7 +15,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // get one team
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     // find a single team by its `id`
     try {
         const teamData = await Team.findByPk(req.params.id);
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update team
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     // update team data
     try {
         const teamData = await Team.update(req.body, {
@@ -50,7 +50,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     // delete one team by its `id` value
     try {
         const teamData = await Team.destroy({

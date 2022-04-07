@@ -4,7 +4,7 @@ const withAuth = require('../../utils/auth');
 
 // api/scores
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     // find all scores
     try {
         const scoreData = await Score.findAll({});
@@ -15,7 +15,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // get one score
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     // find a single score by its `id`
     try {
         const scoreData = await Score.findByPk(req.params.id);
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update score
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     // update score data
     try {
         const scoreData = await Score.update(req.body, {
@@ -50,7 +50,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     // delete one score by its `id` value
     try {
         const scoreData = await Score.destroy({
