@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 });
 
 // get one tournament
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     // find a single tournament by its `id`
     try {
         const tournamentData = await Tournament.findByPk(req.params.id);
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update tournament
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     // update tournament data
     try {
         const tournamentData = await Tournament.update(req.body, {
@@ -50,7 +50,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     // delete one tournament by its `id` value
     try {
         const tournamentData = await Tournament.destroy({

@@ -4,7 +4,7 @@ const withAuth = require('../../utils/auth');
 
 // api/players
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     // find all players
     try {
         const playerData = await Player.findAll({});
@@ -15,7 +15,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // get one player
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     // find a single player by its `id`
     try {
         const playerData = await Player.findByPk(req.params.id);
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // update player
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     // update player data
     try {
         const playerData = await Player.update(req.body, {
@@ -50,7 +50,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     // delete one player by its `id` value
     try {
         const playerData = await Player.destroy({
