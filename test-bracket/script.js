@@ -104,6 +104,7 @@ function renderTeams() {
     rnd1.appendChild(spanDiv);
     
   }
+  console.log(currentRound);
   renderNextRound();
 }
 
@@ -113,19 +114,23 @@ function renderNextRound() {
   currentRound++;
   var newDiv;
   var spanBottom;
-
+  var spanTop;
+  console.log(currentRound);
   //halve the number of remaining teams
   numberOfTeams = numberOfTeams / 2;
   if(numberOfTeams > 1) {
 
   
   advancingTeams.forEach(team => {
-    console.log(advancingTeams)
+    // console.log(advancingTeams)
+    spanTop = document.createElement('div');
     newDiv = document.createElement('div');
     spanBottom = document.createElement('div');
-    
+   
+    var fillerTop = document.createTextNode('');
     var teamName = document.createTextNode(`${team.team}`);
     var fillerBottom = document.createTextNode('');
+    
     team.is_winner = false;
 
     newDiv.appendChild(teamName);
@@ -133,28 +138,33 @@ function renderNextRound() {
 
     spanBottom.setAttribute('class', 'filler-bottom');
     spanBottom.appendChild(fillerBottom);
-    
+
+    spanTop.setAttribute('class', 'filler-top');
+    spanTop.appendChild(fillerTop);
+    console.log(team.team)
     if(currentRound === 2) {
+      rnd2.appendChild(spanTop);
       rnd2.appendChild(newDiv);
       rnd2.appendChild(spanBottom);
+      
       advancingTeams[0].is_winner = true;
       advancingTeams[2].is_winner = true;
-      advancingTeams2.push(advancingTeams[0], advancingTeams[2]);
+      // advancingTeams2.push(advancingTeams[0], advancingTeams[2]);
       
       
       
     }
     
-    if(currentRound === 3) {
-      advancingTeams2 = advancingTeams;
-      console.log('round3');
-      for(i=0; i < numberOfTeams; i++) {
-      rnd3.appendChild(newDiv);
-      rnd3.appendChild(spanBottom);
-      }
-    } else {
-      return;
-    }
+    // if(currentRound === 3) {
+    //   advancingTeams2 = advancingTeams;
+    //   console.log('round3');
+    //   for(i=0; i < numberOfTeams; i++) {
+    //   rnd3.appendChild(newDiv);
+    //   rnd3.appendChild(spanBottom);
+    //   }
+    // } else {
+    //   return;
+    // }
   //   switch (currentRound) {
   //     case 2:
   //       rnd2.appendChild(newDiv);
@@ -173,18 +183,58 @@ function renderNextRound() {
   //       break;
   // } 
   });
+  // checkWinner();
+    renderNextRound2();
 }
       
-    checkWinner();
+    
 
 }
-function checkWinner(){
-  console.log(numberOfTeams);
+
+function renderNextRound2() {
+  // currentRound++;
+  var newDiv;
+  var spanBottom;
+  currentRound++;
+  console.log(advancingTeams)
+  // console.log(currentRound)
+  //halve the number of remaining teams
+  numberOfTeams = numberOfTeams / 2;
   if(numberOfTeams > 1) {
-    renderNextRound();
-    advancingTeams2 = advancingTeams;
+  advancingTeams = ["Rockets", "Sprockets"]
+  advancingTeams.forEach(team => {
+    
+    spanTop = document.createElement('div');
+    newDiv = document.createElement('div');
+    spanBottom = document.createElement('div');
+    
+    var fillerTop = document.createTextNode('');
+    var teamName = document.createTextNode(`${team}`);
+    var fillerBottom = document.createTextNode('');
+    team.is_winner = false;
+
+    spanTop.appendChild(fillerTop);
+    spanTop.setAttribute('class', 'filler-top')
+    newDiv.appendChild(teamName);
+    newDiv.setAttribute('class', 'advancing-team rnd3-team');
+    spanBottom.setAttribute('class', 'filler-bottom rnd3-filler');
+    spanBottom.appendChild(fillerBottom);  
+    rnd3.appendChild(spanTop)
+    rnd3.appendChild(newDiv);
+    rnd3.appendChild(spanBottom);
+    
+  });
+  // checkWinner();
   }
 }
+
+// function checkWinner(){
+//   console.log(numberOfTeams);
+//   if(numberOfTeams > 1) {
+//     renderNextRound();
+//     advancingTeams2 = advancingTeams;
+//   }
+// }
 // function checkWinner() {
 //   if(currentRound === 2) {
 //     console.log(currentRound)
