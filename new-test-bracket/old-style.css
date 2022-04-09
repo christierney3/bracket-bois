@@ -1,0 +1,67 @@
+#round-1, #round-2 {
+  margin: 0;
+  padding: 0;
+}
+.container-fluid {
+  background-color: antiquewhite;
+}
+
+
+.team {  
+  /* background-color: lightblue; */
+  height: 30px;
+  padding-left: 20px;
+  
+}
+
+.top-team {
+  /* background-color: lightblue; */
+  border-bottom: 1px solid black;
+}
+
+.team-span {
+  height: 30px;
+  /* background-color: blue; */
+  border-right: 1px solid black;
+}
+
+.bottom-team {
+  /* background-color: lightgreen; */
+  border-top: 1px solid black;
+}
+
+.match-span {
+  height: 40px;
+}
+
+.filler-top:first-child {
+  height: 20px;
+  /* background-color: lightgray; */
+
+}
+
+.filler-bottom {
+  height: 100px;
+  /* background-color: grey; */
+}
+
+.filler-bottom:nth-child(odd) {
+  border-right: 1px solid black;
+  
+}
+
+#round-2 .team {
+  /* background-color: pink; */
+  border-bottom: 1px solid black;
+}
+
+#round-2 > .team{
+  /* background-color: pink; */
+  border-top: none;
+  border-bottom: 1px solid black;
+}
+
+#round-2 .team:nth-child(odd) {
+  border-right: 1px solid black;
+}
+

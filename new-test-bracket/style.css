@@ -1,66 +1,85 @@
-#round-1, #round-2 {
+#tournament > div {
   margin: 0;
   padding: 0;
 }
-.container-fluid {
-  background-color: antiquewhite;
+.row {
+  width: 50vw;
 }
 
-
-.team {  
-  /* background-color: lightblue; */
-  height: 30px;
+.team {
+  /* background-color: pink; */
   padding-left: 20px;
-  
 }
 
 .top-team {
-  /* background-color: lightblue; */
+  /* background-color: red; */
+  height: 30px;
   border-bottom: 1px solid black;
 }
 
 .team-span {
-  height: 30px;
   /* background-color: blue; */
+  height: 30px;
   border-right: 1px solid black;
 }
 
 .bottom-team {
-  /* background-color: lightgreen; */
+  /* background-color: green; */
+  margin-bottom: 30px;
   border-top: 1px solid black;
 }
 
-.match-span {
-  height: 40px;
-}
-
-.filler-top:first-child {
-  height: 20px;
-  /* background-color: lightgray; */
-
-}
-
-.filler-bottom {
-  height: 100px;
-  /* background-color: grey; */
-}
-
-.filler-bottom:nth-child(odd) {
-  border-right: 1px solid black;
-  
-}
-
-#round-2 .team {
+#round-2 {
+  position: relative;
+  top: 15px;
   /* background-color: pink; */
-  border-bottom: 1px solid black;
 }
 
-#round-2 > .team{
-  /* background-color: pink; */
-  border-top: none;
-  border-bottom: 1px solid black;
+#round-2 .team-span {
+  height: 90px;
 }
 
-#round-2 .team:nth-child(odd) {
+#round-2 .bottom-team {
+  margin-bottom: 85px;
+  /* background-color: blue; */
+  border: none;
+  border-bottom: 1px solid black;
   border-right: 1px solid black;
+}
+
+#round-3 {
+  position: relative;
+  top: 65px;
+}
+
+#round-3 .team-span {
+  /* background-color: blue; */
+  border-right: 1px solid black;
+  height: 210px;
+}
+
+#round-3 .bottom-team {
+  /* background-color: green; */
+  border: none;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+#round-4 {
+  position: relative;
+  top: 175px;
+}
+
+#round-4 .team-span {
+  border: none;
+}
+
+#tournament div:nth-child(n+9) {
+  background-color: pink;
+  transform: scaleX(-1);
+  align-items:flex-end;
+}
+
+#tournament.row {
+  /* background-color: yellow; */
 }
