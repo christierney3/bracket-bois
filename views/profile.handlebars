@@ -1,51 +1,20 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2>Welcome, {{username}}!</h2>
   </div>
 </div>
+<div class="form-group">
+  <a href="/tournaments" class="btn btn-primary">Create Tournament</a>
+</div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Tournament:</h3>
-
-    <form class="form new-tournament-form">
-      <div class="form-group">
-        <label for="tournament-name">Tournament name:</label>
-        <input class="form-input" type="text" id="tournament-name" name="tournament-name" />
-      </div>
-      <div class="form-group">
-        <label for="tournament-size">How many teams will be in the tournament?</label>
-        <input class="form-input" type="radio" id="tournament-size1" name="tournament-size" />
-        <label for="tournament-size1">4</label>
-        <input class="form-input" type="radio" id="tournament-size2" name="tournament-size" />
-        <label for="tournament-size2">8</label>
-        <input class="form-input" type="radio" id="tournament-size3" name="tournament-size" />
-        <label for="tournament-size3">16</label>
-      </div>
-      <div class="form-group">
-        <label for="start">Start date:</label>
-        <input class="form-input" type="date" id="start-date" min="2022-04-13" max="2023-04-13">
-        <label for="end">End date:</label>
-        <input class="form-input" type="date" id="end-date" min="2022-04-13" max="2023-04-13">
-      </div>
-      <div class="form-group">
-        <label for="tournament-type">Type:</label>
-        <textarea class="form-input" id="tournament-type" name="tournament-type"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
-
-  {{#if tournaments.length}}
+{{#if tournaments.length}}
   <div class="col-md-6 tournament-list">
-    <h3>Current tournaments:</h3>
+    <h3>Your tournaments</h3>
 
     {{#each tournaments as |tournament|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/tournament/{{tournament.id}}">{{tournament.name}}</a></h4>
+        <h4><a href="/tournaments/{{tournament.id}}">{{tournament.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{tournament.id}}">DELETE</button>

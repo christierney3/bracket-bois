@@ -21,20 +21,44 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/tournament/:id', async (req, res) => {
+router.get('/tournaments', async (req, res) => {
   try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
+    // Get all tournaments and JOIN with user data
+    const tournamentData = await Tournament.findAll({
       include: [
         {
-          model: User,
-          attributes: ['name'],
+          model: User
         },
       ],
     });
 
+    // Serialize data so the template can read it
+    const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('tournaments', { 
+      tournaments, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/tournaments/:id', async (req, res) => {
+  try {
+    const tournamentData = await Tournament.findByPk(req.params.id, {
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ['name']
+      //   },
+      // ],
+    });
+
     const tournament = tournamentData.get({ plain: true });
 
-    res.render('tournament', {
+    res.render('singleTournament', {
       ...tournament,
       logged_in: req.session.logged_in
     });
@@ -49,6 +73,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
+      include: [{ model: Tournament }],
     });
 
     const user = userData.get({ plain: true });
@@ -59,6 +84,16 @@ router.get('/profile', withAuth, async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.post('/profile', async (req, res) => {
+  try {
+      console.log(req.body);
+      const tournamentData = await Tournament.create(req.body);
+      res.status(200).json(tournamentData);
+  } catch (err) {
+      res.status(400).json(err);
   }
 });
 
