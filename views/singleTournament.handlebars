@@ -1,5 +1,35 @@
-<div class="row">
+<div class="row tournament-list">
   <div class="col-auto">
     <h2>{{name}}!</h2>
   </div>
+  <div class="col-md-4 tournament-list">
+    <button class="btn btn-sm btn-info" data-id="{{id}}">EDIT</button>
+    <button class="btn btn-sm btn-danger delete" data-id="{{id}}">DELETE</button>
+  </div>
 </div>
+
+<div class="row">
+  <div class="col-auto">
+    <h6>Type: {{type}}</h6>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-auto">
+    <h6>Start Date: {{{format_date start_date}}}</h6>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-auto">
+    <h6>End Date: {{{format_date end_date}}}</h6>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-auto">
+    <h6>Teams: {{size}}</h6>
+  </div>
+</div>
+
+<script src="/js/profile.js"></script>
