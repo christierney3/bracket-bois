@@ -1,0 +1,100 @@
+#tournament > div {
+  margin: 0;
+  padding: 0;
+}
+.row {
+  width: 50vw;
+  /* background-color: yellow; */
+}
+
+.team {
+  /* background-color: pink; */
+  padding-left: 20px;
+}
+
+.top-team {
+  /* background-color: red; */
+  height: 30px;
+  border-bottom: 1px solid black;
+}
+
+.team-span {
+  /* background-color: blue; */
+  height: 30px;
+  border-right: 1px solid black;
+}
+
+.bottom-team {
+  /* background-color: green; */
+  margin-bottom: 30px;
+  border-top: 1px solid black;
+}
+
+#round-2 {
+  position: relative;
+  top: 15px;
+  /* background-color: pink; */
+}
+
+#round-2:nth-child(n+9) {
+  background-color: green;
+}
+
+#round-2 .team-span {
+  height: 90px;
+}
+
+#round-2 .bottom-team {
+  margin-bottom: 85px;
+  /* background-color: blue; */
+  border: none;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+#round-3 {
+  position: relative;
+  top: 65px;
+}
+
+#round-3 .team-span {
+  /* background-color: blue; */
+  border-right: 1px solid black;
+  height: 210px;
+}
+
+#round-3 .bottom-team {
+  /* background-color: green; */
+  border: none;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+#round-4 {
+  position: relative;
+  top: 175px;
+}
+
+#round-4 .team-span {
+  border: none;
+}
+
+div:nth-child(n+9) .top-team  {
+  position:relative;
+  background-color: pink;
+  top: 30px;
+  /* transform: scaleX(-1); */
+  /* align-items:flex-end; */
+}
+
+/* #tournament.row { */
+  /* background-color: yellow; */
+/* } */
+
+/* .bracket-2 {
+  background-color:green;
+} */
+
+/* .team { */
+  /* background-color:lightgreen; */
+/* } */
