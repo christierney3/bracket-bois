@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tournament, Match, Team } = require('../../models');
+const { Tournament, Round, Match, Score, Team } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // api/tournaments
@@ -20,15 +20,16 @@ router.get('/:id', async (req, res) => {
     try {
         const tournamentData = await Tournament.findOne({
             where: { id: req.params.id },
-            include: [{ 
+            include: [{
                 model: Round,
+                attributes: { exclude: ['tournament_id'] },
                 include: [{
                     model: Match,
                     include: [
                         { model: Score },
-                        { model: Team, through: Score}
+                        { model: Team, through: Score},
                     ]
-                }],
+                }]
             }]
         });
         res.status(200).json(tournamentData);
