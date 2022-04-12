@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tournament, User } = require('../models');
+const { Tournament, Round, Match, Score, Team } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
     const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      tournaments, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      tournaments,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -35,9 +35,9 @@ router.get('/tournaments', async (req, res) => {
     const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('tournaments', { 
-      tournaments, 
-      logged_in: req.session.logged_in 
+    res.render('tournaments', {
+      tournaments,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -46,13 +46,19 @@ router.get('/tournaments', async (req, res) => {
 
 router.get('/tournaments/:id', async (req, res) => {
   try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
-      // include: [
-      //   {
-      //     model: User,
-      //     attributes: ['name']
-      //   },
-      // ],
+    const tournamentData = await Tournament.findOne({
+      where: { id: req.params.id },
+      include: [{
+        model: Round,
+        attributes: { exclude: ['tournament_id'] },
+        include: [{
+          model: Match,
+          include: [
+            { model: Score },
+            { model: Team, through: Score },
+          ]
+        }]
+      }]
     });
 
     const tournament = tournamentData.get({ plain: true });
@@ -88,11 +94,11 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.post('/profile', async (req, res) => {
   try {
-      console.log(req.body);
-      const tournamentData = await Tournament.create(req.body);
-      res.status(200).json(tournamentData);
+    console.log(req.body);
+    const tournamentData = await Tournament.create(req.body);
+    res.status(200).json(tournamentData);
   } catch (err) {
-      res.status(400).json(err);
+    res.status(400).json(err);
   }
 });
 
