@@ -36,6 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 // first time force = true then turn off, npm run seed in heroku terminal
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
 });
