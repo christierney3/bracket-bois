@@ -26,8 +26,15 @@ Tournament.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    spots: {
+    size: {
       type: DataTypes.INTEGER,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
   },
   {

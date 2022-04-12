@@ -1,25 +1,19 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Tournament, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
+    // Get all tournaments and JOIN with user data
+    const tournamentData = await Tournament.findAll({
     });
 
     // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      projects, 
+      tournaments, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -27,21 +21,45 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/tournaments', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    // Get all tournaments and JOIN with user data
+    const tournamentData = await Tournament.findAll({
       include: [
         {
-          model: User,
-          attributes: ['name'],
+          model: User
         },
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    // Serialize data so the template can read it
+    const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
 
-    res.render('project', {
-      ...project,
+    // Pass serialized data and session flag into template
+    res.render('tournaments', { 
+      tournaments, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/tournaments/:id', async (req, res) => {
+  try {
+    const tournamentData = await Tournament.findByPk(req.params.id, {
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ['name']
+      //   },
+      // ],
+    });
+
+    const tournament = tournamentData.get({ plain: true });
+
+    res.render('singleTournament', {
+      ...tournament,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -55,7 +73,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Tournament }],
     });
 
     const user = userData.get({ plain: true });
@@ -69,6 +87,16 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+router.post('/profile', async (req, res) => {
+  try {
+      console.log(req.body);
+      const tournamentData = await Tournament.create(req.body);
+      res.status(200).json(tournamentData);
+  } catch (err) {
+      res.status(400).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -77,6 +105,16 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 });
 
 module.exports = router;

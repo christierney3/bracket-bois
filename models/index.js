@@ -6,6 +6,15 @@ const Team = require('./Team');
 const Tournament = require('./Tournament');
 const User = require('./User');
 
+User.hasMany(Tournament, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+Tournament.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
 Tournament.hasMany(Round, {
   foreignKey: 'tournament_id',
   onDelete: 'CASCADE'
