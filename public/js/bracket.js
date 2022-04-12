@@ -1,10 +1,9 @@
 let round = 1;
 var numberOfRounds = 0;
+let tournamentData;
 
 const pageURL = window.location.href;
-console.log(pageURL);
 const apiURL = pageURL.replace('tournaments/', 'api/tournaments/');
-console.log(apiURL);
 //sequelize query to the database
 
 const getTournamentInfo = async () => {
@@ -14,11 +13,11 @@ const getTournamentInfo = async () => {
           return response.json()
         }
       }).then(function (data) {
-        console.log(data)
+        tournamentData = data;
       })
 };
 
-let teams = [
+teams = [
   {
     "id": 1,
     "team": "Rockets",
