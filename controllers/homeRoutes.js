@@ -5,18 +5,9 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     // Get all tournaments and JOIN with user data
-    const tournamentData = await Tournament.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
+    const tournamentData = await Tournament.findAll({});
     // Serialize data so the template can read it
-    const tournaments = tournamentData.map((tournament) => Tournament.get({ plain: true }));
-
+    const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       tournaments, 
