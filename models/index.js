@@ -32,6 +32,15 @@ Match.belongsTo(Round, {
   foreignKey: 'round_id'
 });
 
+Match.hasMany(Score, {
+  foreignKey: 'match_id',
+  onDelete: 'CASCADE'
+});
+
+Score.belongsTo(Match, {
+  foreignKey: 'match_id'
+});
+
 Match.belongsToMany(Team, { through: Score });
 
 Team.belongsToMany(Match, { through: Score });

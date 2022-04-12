@@ -1,0 +1,32 @@
+<div class="row mt-4">
+  {{#if logged_in}}
+  <div class="col-md-6">
+    <h3>Enter the team information:</h3>
+
+    <form class="form new-team-form">
+      <div class="form-group">
+        <label for="team-name">team name:</label>
+        <input class="form-input" type="text" id="team-name" name="team-name" />
+      </div>
+    </form>
+  </div>
+  {{/if}}
+  {{#if teams.length}}
+  <div class="col-md-6 team-list">
+    <h3>Current teams:</h3>
+
+    {{#each teams as |team|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/teams/{{team.id}}">{{team.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{team.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/team.js"></script>
