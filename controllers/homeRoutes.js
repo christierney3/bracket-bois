@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tournament, Round, Match, Score, Team } = require('../models');
+const { Tournament, Round, Match, Score, User, Team } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
