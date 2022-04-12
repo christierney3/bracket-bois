@@ -4,6 +4,7 @@
 }
 .row {
   width: 50vw;
+  /* background-color: yellow; */
 }
 
 .team {
@@ -33,6 +34,10 @@
   position: relative;
   top: 15px;
   /* background-color: pink; */
+}
+
+#round-2:nth-child(n+9) {
+  background-color: green;
 }
 
 #round-2 .team-span {
@@ -74,12 +79,22 @@
   border: none;
 }
 
-#tournament div:nth-child(n+9) {
+div:nth-child(n+9) .top-team  {
+  position:relative;
   background-color: pink;
-  transform: scaleX(-1);
-  align-items:flex-end;
+  top: 30px;
+  /* transform: scaleX(-1); */
+  /* align-items:flex-end; */
 }
 
 #tournament.row {
   /* background-color: yellow; */
+}
+
+/* .bracket-2 {
+  background-color:green;
+} */
+
+.team {
+  /* background-color:lightgreen; */
 }
