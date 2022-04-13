@@ -1,8 +1,7 @@
 
 ## Bracket Bois
 
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath) ![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 ## License description: (https://opensource.org/licenses/MIT)
 
