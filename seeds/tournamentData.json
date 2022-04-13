@@ -4,6 +4,6 @@
     "type": "Beer Pong",
     "start_date": "2022-05-01T12:00:00Z",
     "end_date" : "2022-05-01T14:00:00Z",
-    "spots" : 8
+    "size" : 8
   }
 ]
