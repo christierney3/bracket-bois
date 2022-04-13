@@ -98,3 +98,12 @@ div:nth-child(n+9) .top-team  {
 /* .team { */
   /* background-color:lightgreen; */
 /* } */
+
+.darkmode--activated .top-team, .darkmode--activated .bottom-team, .darkmode--activated .team-span, .darkmode--activated #round-3 .bottom-team, .darkmode--activated #round-3 .team-span, .darkmode--activated #round-2 .bottom-team, .darkmode--activated #round-2 .team-span {
+  border-color: white;
+}
+
+.darkmode--activated #tournament, .darkmode--activated .bb-title, .darkmode--activated .tournament-list {
+  color: white;
+  
+}
