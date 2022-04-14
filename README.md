@@ -13,7 +13,7 @@ The data entered is saved in the database and is used to populate the page. This
 
 ## Table of Contents
 * [Description](#description)
-* [Installtion](#installation)
+* [Installation](#installation)
 * [Usage Info](#usage)
 * [Contributions](#contributing)
 * [Questions](#questions)
