@@ -116,16 +116,6 @@ teams = [
   // }
 ]
 
-//create a new bracket section for 16, 32 teams
-
-//if logic 8 teams, 16, 32
-//16 teams - need 2 brackets, etc
-//split arrays based on brackets
-//array1 = bracket1, array2 = bracket2
-
-//row -> col -> row row ->
-
-
 //determines how many rounds will be rendered based on the number of teams
 function howManyRounds() {
   console.log(teams);
@@ -138,11 +128,11 @@ function howManyRounds() {
 
 howManyRounds();
 
-if (teams.length === 16) {
-  // var bracket1Teams = teams.slice(0, 8);
-  var bracket2Teams = teams.slice(8, 16);
-  console.log(bracket2Teams);
-}
+// if (teams.length === 16) {
+// var bracket1Teams = teams.slice(0, 8);
+//   var bracket2Teams = teams.slice(8, 16);
+//   console.log(bracket2Teams);
+// }
 
 function renderRound(round) {
   console.log(`round ${round}`);

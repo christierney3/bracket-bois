@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
 }
-.row {
+#tournament.row {
   width: 50vw;
   /* background-color: yellow; */
 }

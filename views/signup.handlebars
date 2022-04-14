@@ -1,4 +1,4 @@
-  <div class="col-md-6">
+  {{!-- <div class="col-md-6">
     <h2>Signup</h2>
 
     <form class="form signup-form">
@@ -19,6 +19,56 @@
       </div>
     </form>
   </div>
-</div>
+</div> --}}
+
+
+<body class="container-fluid p-0">
+  <main class="container col-6" style="background-color:lightblue">
+    <div class="row mt-4 align-items-center">
+      <div class="col-4  mx-auto text-center">
+        <h2 class="mt-4">Sign Up!</h2>
+      </div>
+    </div>
+
+    <form class="signup-form">
+      <div class="row">
+        <div class="col-12 text-center mx-auto justify-content-center">
+          <div class="mx-auto mt-4 mb-2">
+            <div id="username-div" class="my-2 row">
+              <label class="col-3 ms-4"><h5>Username</h5></label>
+              <input type="text" id="username" class="col-7" placeholder="Username" />
+              <hr class="col-11 mt-4 mx-auto">
+            </div>
+          </div>
+
+          <div class="mx-auto mb-2">
+            <div id="email-div" class="my-2 row">
+              <label class="col-3 ms-4"><h5>Email</h5></label>
+              <input type="text" id="email" class="col-7" placeholder="Email" />
+              <hr class="col-11 mt-4 mx-auto">
+            </div>
+          </div>
+
+          <div class="mx-auto mb-2">
+            <div id="password-div" class="my-2 row">
+              <label class="col-3 ms-4"><h5>Password</h5></label>
+              <input type="password" id="password" class="col-7" placeholder="Password" />
+              <hr class="col-11 mt-4">
+            </div>
+          </div>
+        </div>
+        
+
+
+      <button type="submit" class="btn btn-primary col-6 mx-auto">Register!</button>
+  </form>
+      <div class="signup row p-0 py-4 m-0 text-center">
+        <div class="col">
+          <h6>Already registered? <a href="/signup">Sign in here</a></h6>
+        </div>
+      </div>
+    </div>
+</body>
+
 
 <script src="./js/signup.js"></script>
